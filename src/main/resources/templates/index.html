@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GREEN-API Integration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            display: flex;
+            max-width: 1200px;
+            width: 100%;
+        }
+        .forms-container {
+            width: 50%;
+            margin-right: 20px;
+        }
+        .result-container {
+            width: 50%;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: center; /* Центрирует содержимое блока */
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 18px; /* Изменяет размер шрифта метки */
+            color: #4CAF50; /* Изменяет цвет метки */
+        }
+        .form-group input {
+            padding: 15px; /* Увеличивает внутренние отступы */
+            width: 80%; /* Устанавливает ширину полей ввода */
+            border-radius: 5px; /* Добавляет закругленные углы */
+            box-sizing: border-box;
+            font-size: 16px; /* Изменяет размер шрифта поля ввода */
+            border: 1px solid #ccc;
+        }
+        .result {
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            height: 85%;
+            overflow-y: auto;
+            word-wrap: break-word;
+            white-space: normal;
+        }
+
+        .getSettings {
+            text-align: center;
+        }
+        .getSettings button {
+            font-size: 16px; /* Увеличивает размер шрифта */
+            padding: 15px 120px; /* Увеличивает внутренние отступы, делая кнопку больше */
+            border-radius: 5px; /* Добавляет закругленные углы */
+            background-color: #4CAF50; /* Цвет фона */
+            color: white; /* Цвет текста */
+            border: none; /* Убирает рамку */
+            cursor: pointer; /* Меняет курсор на указатель при наведении */
+        }
+
+        .getSettings button:hover {
+            background-color: #45a049; /* Изменяет цвет фона при наведении */
+        }
+        .getStateInstance {
+            text-align: center;
+        }
+
+        .getStateInstance button{
+            font-size: 16px; /* Увеличивает размер шрифта */
+            padding: 15px 98px; /* Увеличивает внутренние отступы, делая кнопку больше */
+            border-radius: 5px; /* Добавляет закругленные углы */
+            background-color: #4CAF50; /* Цвет фона */
+            color: white; /* Цвет текста */
+            border: none; /* Убирает рамку */
+            cursor: pointer; /* Меняет курсор на указатель при наведении */
+        }
+
+        .getStateInstance button:hover{
+            background-color: #45a049;
+        }
+        .sendMessage {
+            text-align: center;
+        }
+
+        .sendMessage button{
+            font-size: 16px; /* Увеличивает размер шрифта */
+            padding: 15px 110px; /* Увеличивает внутренние отступы, делая кнопку больше */
+            border-radius: 5px; /* Добавляет закругленные углы */
+            background-color: #4CAF50; /* Цвет фона */
+            color: white; /* Цвет текста */
+            border: none; /* Убирает рамку */
+            cursor: pointer; /* Меняет курсор на указатель при наведении */
+        }
+
+        .sendMessage button:hover{
+            background-color: #45a049;
+        }
+
+        .sendFileByUrl {
+            text-align: center;
+        }
+
+        .sendFileByUrl button{
+            font-size: 16px; /* Увеличивает размер шрифта */
+            padding: 15px 125px; /* Увеличивает внутренние отступы, делая кнопку больше */
+            border-radius: 5px; /* Добавляет закругленные углы */
+            background-color: #4CAF50; /* Цвет фона */
+            color: white; /* Цвет текста */
+            border: none; /* Убирает рамку */
+            cursor: pointer; /* Меняет курсор на указатель при наведении */
+        }
+
+        .sendFileByUrl button:hover{
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="forms-container">
+        <h1>GREEN-API Integration</h1>
+
+        <div class="form-group idInstance">
+            <label for="idInstance"></label>
+            <input type="text" id="idInstance" name="idInstance" placeholder="idInstance" required>
+        </div>
+
+        <div class="form-group apiTokenInstance">
+            <label for="apiTokenInstance"></label>
+            <input type="text" id="apiTokenInstance" name="apiTokenInstance" placeholder="ApiTokenInstance" required>
+        </div>
+
+        <form action="/api/getSettings" method="get" class="getSettings">
+            <input type="hidden" name="idInstance" id="formIdInstance">
+            <input type="hidden" name="apiTokenInstance" id="formApiTokenInstance">
+            <button type="submit">Get Settings</button>
+        </form>
+        <br>
+        <form action="/api/getStateInstance" method="get" class="getStateInstance">
+            <input type="hidden" name="idInstance" id="formIdInstance">
+            <input type="hidden" name="apiTokenInstance" id="formApiTokenInstance">
+            <button type="submit">Get State Instance</button>
+        </form>
+        <br>
+        <br>
+        <form action="/api/sendMessage" method="post" class="sendMessage">
+            <input type="hidden" name="idInstance" id="formIdInstance">
+            <input type="hidden" name="apiTokenInstance" id="formApiTokenInstance">
+            <div class="form-group">
+                <input type="text" name="chatId" placeholder="Chat ID" required>
+            </div>
+            <div class="form-group">
+                <input type="text" name="message" placeholder="Message" required>
+            </div>
+            <button type="submit">Send Message</button>
+        </form>
+        <br>
+        <br>
+        <form action="/api/sendFileByUrl" method="post" class="sendFileByUrl">
+            <input type="hidden" name="idInstance" id="formIdInstance">
+            <input type="hidden" name="apiTokenInstance" id="formApiTokenInstance">
+            <div class="form-group">
+                <input type="text" name="chatId" placeholder="Chat ID" required>
+            </div>
+            <div class="form-group">
+                <input type="text" name="urlFile" placeholder="File URL" required>
+            </div>
+            <div class="form-group">
+                <input type="text" name="fileName" placeholder="File Name" required>
+            </div>
+            <button type="submit">Send File</button>
+        </form>
+    </div>
+
+    <div class="result-container">
+        <h2>Ответ:</h2>
+        <div class="result" th:text="${result}"></div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var idInstance = document.getElementById('idInstance');
+        var apiTokenInstance = document.getElementById('apiTokenInstance');
+
+        var forms = document.querySelectorAll('form');
+        forms.forEach(function (form) {
+            form.addEventListener('submit', function () {
+                form.querySelector('#formIdInstance').value = idInstance.value;
+                form.querySelector('#formApiTokenInstance').value = apiTokenInstance.value;
+            });
+        });
+    });
+</script>
+</body>
+</html>
